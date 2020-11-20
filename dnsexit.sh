@@ -3,7 +3,7 @@
 MYIP="None"
 
 function updateIP() {
-	RESULT=$(curl -s "https://www.dnsexit.com/RemoteUpdate.sv?login=${LOGIN}&password=${PASSWORD}&host=${HOST}")
+	RESULT=$(curl -s "https://www.dnsexit.com/RemoteUpdate.sv?login=${LOGIN}&password=${PASSWORD}&host=${HOST}&myip=$1")
 	RESULT=$(echo $RESULT)
 	echo $RESULT;
 	if [ "$RESULT" == "HTTP/1.1 200 OK 0=Success" ] || [ "$RESULT" == "HTTP/1.1 200 OK 4=IP not changed. To save our system resources, please don't post updates unless the IP got changed." ]; then
