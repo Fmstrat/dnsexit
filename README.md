@@ -1,6 +1,5 @@
 # dnsexit
-DNSExit dynamic IP client for Docker
-With API support
+DNSExit dynamic IP client for Docker with API support
 
 ```
 version: '3'
@@ -8,8 +7,8 @@ version: '3'
 services:
 
   dnsexit:
-    image: dnsexit
-    container_name: dnsexit
+    image: dnsexit-api
+    container_name: dnsexit-api
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
