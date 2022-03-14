@@ -3,7 +3,12 @@
 MYIP="None"
 
 function updateIP() {
-	RESULT=$(curl -s "https://www.dnsexit.com/RemoteUpdate.sv?login=${LOGIN}&password=${PASSWORD}&host=${HOST}")
+	if [ -v $APIKEY ]
+		then
+		RESULT=$(curl -s -k "https://api.dnsexit.com/dns/ud/?apikey=${APIKEY}" -d host="{$HOST}")
+		else
+		RESULT=$(curl -s "https://www.dnsexit.com/RemoteUpdate.sv?login=${LOGIN}&password=${PASSWORD}&host=${HOST}")
+	fi
 	RESULT=$(echo $RESULT)
 	echo $RESULT;
 	if [ "$RESULT" == "HTTP/1.1 200 OK 0=Success" ] || [ "$RESULT" == "HTTP/1.1 200 OK 4=IP not changed. To save our system resources, please don't post updates unless the IP got changed." ]; then
@@ -21,8 +26,8 @@ function checkIP() {
 	else
 		echo "IP is still '$MYIP'";
 	fi
-	echo "Waiting ${INTERVAL}..."
-	sleep ${INTERVAL}
+	echo "Waiting ${SLEEP}..."
+	sleep ${SLEEP}
 }
 
 while true; do
