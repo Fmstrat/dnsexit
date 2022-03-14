@@ -26,8 +26,8 @@ function checkIP() {
 	else
 		echo "IP is still '$MYIP'";
 	fi
-	echo "Waiting ${SLEEP}..."
-	sleep ${SLEEP}
+	echo "Waiting ${INTERVAL}..."
+	sleep ${INTERVAL}
 }
 
 while true; do
