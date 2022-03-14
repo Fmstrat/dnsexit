@@ -7,8 +7,8 @@ version: '3'
 services:
 
   dnsexit:
-    image: dnsexit-api
-    container_name: dnsexit-api
+    image: dnsexit
+    container_name: dnsexit
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
